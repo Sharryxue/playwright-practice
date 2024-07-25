@@ -1,0 +1,19 @@
+Summary
+This is a repo for writing testcase in playwright + TS tempraryly for a private web. 
+The purpose for this is to understand the test frame and put it into use.
+
+Installation
+Node.js
+VSCode
+Playwright
+
+Setup the Enviroment
+# Creat a new folder
+# Open it in VSCode
+# Ctrl + Shift + X to find the Playwright Test for VSCode and click Install
+# Ctrl + Shift + P to find the Test: Install Playwright, remember to check the JS if you gonna develop your test in JS, you can uncheck the webdriver if you don't want all the default ones
+# Check on console to confirm all steps finished successfully
+# You can start with your testcase writing now
+
+Reference
+https://playwright.dev/docs/writing-tests
