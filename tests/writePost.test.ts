@@ -23,13 +23,13 @@ test("Can post page", async ({page}) => {
     //Locators
     /*  find the way to make the locator be reuseble, as the only difference for buttons in navigator is the text.
     see if there is a way to make the text be a variable. */
-    const postLink = page.locator("nav .parent a[href*='write']")
-    const postPageLink = page.getByText('创建页面')
+    const oprateDropdown = page.getByText(`选中项`);
     const pageSummary = page.getByPlaceholder(`标题`);
     const pageContent = page.locator(`textarea#text`);
     const pagePostButton = page.getByText(`发布页面`);
+    const postLink = page.locator("nav .parent a[href*='write']");
+    const postPageLink = page.getByText('创建页面')
     const successMessage = page.locator(`.success`);
-    const oprateDropdown = page.getByText(`选中项`);
     const removeOption = page.getByText(`删除`);
     const tableCheckbox = page.locator(`//tr[contains(.,'内部测试')]//input[(@type='checkbox')]`);
 
