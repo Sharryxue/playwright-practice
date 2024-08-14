@@ -43,14 +43,12 @@ test("Can post page", async ({page}) => {
     //Locators
     /*  find the way to make the locator be reuseble, as the only difference for buttons in navigator is the text.
     see if there is a way to make the text be a variable. */
-    const oprateDropdown = page.getByText(`选中项`);
     const pageSummary = page.getByPlaceholder(`标题`);
     const pageContent = page.locator(`textarea#text`);
     const pagePostButton = page.getByText(`发布页面`);
     const postLink = page.locator("nav .parent a[href*='write']");
     const postPageLink = page.getByText('创建页面')
     const successMessage = page.locator(`.success`);
-    const removeOption = page.getByText(`删除`);
     const tableCheckbox = page.locator(`//tr[contains(.,'内部测试')]//input[(@type='checkbox')]`);
 
     //Actions
@@ -77,10 +75,8 @@ test("Can post article", async ({page}) => {
     const articleContent = page.locator(`textarea#text`);
     const articlePostButton = page.getByText(`发布文章`);
    // This is due to issue found in https://sharry-shi.atlassian.net/browse/SCRUM-27?focusedCommentId=10010
-    const oprateDropdown = page.locator(`(//div[contains(@class,'row')]//div[@class='operate']//button)[1]`);
     const postArticleLink = page.getByText('撰写文章');
     const postLink = page.locator("nav .parent a[href*='write']");
-    const removeOption = page.locator(`(//div[contains(@class,'row')]//div[@class='operate']//a)[1]`);
     const successMessage = page.locator(`.success`);
     const tableCheckbox = page.locator(`//tr[contains(.,'内部测试')]//input[(@type='checkbox')]`);
 
