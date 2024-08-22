@@ -1,26 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-async function login(page) {
-    //Setup Action
-    // See if this can make the login test reuseble
-    //await login.loginTest();
-
-    //Navigate to the URL
-    await page.goto(`http://alanzh.com/`);
-
-    //Locators
-    const loginButton = page.locator(`.submit`);
-    const loginLink = page.getByText(`登录`);
-    const userName = page.getByPlaceholder(`用户名`);
-    const userPassword = page.getByPlaceholder(`密码`);
-
-    //Actions
-    await loginLink.click();
-    await userName.fill('test');
-    await userPassword.fill('000000');
-    await loginButton.click();
-}
-
 async function Teardown(page) {
     //Locators
     const successMessage = page.locator(`.success`);
@@ -38,8 +17,6 @@ async function Teardown(page) {
 }
 
 test("Can post page", async ({page}) => {
-    await login(page);
-
     //Locators
     /*  find the way to make the locator be reuseble, as the only difference for buttons in navigator is the text.
     see if there is a way to make the text be a variable. */
@@ -47,7 +24,7 @@ test("Can post page", async ({page}) => {
     const pageContent = page.locator(`textarea#text`);
     const pagePostButton = page.getByText(`发布页面`);
     const postLink = page.locator("nav .parent a[href*='write']");
-    const postPageLink = page.getByText('创建页面')
+    const postPageLink = page.getByText('创建页面');
     const successMessage = page.locator(`.success`);
     const tableCheckbox = page.locator(`//tr[contains(.,'内部测试')]//input[(@type='checkbox')]`);
 
@@ -62,12 +39,10 @@ test("Can post page", async ({page}) => {
     await expect(successMessage).toHaveText('页面 "内部测试" 已经发布');
     expect(tableCheckbox).toBeVisible();
 
-    await Teardown(page)
+    await Teardown(page);
 });
 
 test("Can post article", async ({page}) => {
-    await login(page);
-
     //Locators
     /*  find the way to make the locator be reuseble, as the only difference for buttons in navigator is the text.
     see if there is a way to make the text be a variable. */
@@ -91,7 +66,7 @@ test("Can post article", async ({page}) => {
     await expect(successMessage).toHaveText('文章 "内部测试" 已经发布');
     expect(tableCheckbox).toBeVisible();
 
-    await Teardown(page)
+    await Teardown(page);
 });
 
 test.afterEach(async ({ page }) => {
@@ -99,4 +74,4 @@ test.afterEach(async ({ page }) => {
   
     if (test.info().status !== test.info().expectedStatus)
       console.log(`Did not run as expected, ended up at ${page.url()}`);
-  });
+});
