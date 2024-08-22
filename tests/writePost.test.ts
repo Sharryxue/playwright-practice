@@ -17,6 +17,7 @@ async function Teardown(page) {
 }
 
 test("Can post page", async ({page}) => {
+    await page.goto(`/admin`);
     //Locators
     /*  find the way to make the locator be reuseble, as the only difference for buttons in navigator is the text.
     see if there is a way to make the text be a variable. */
@@ -43,6 +44,7 @@ test("Can post page", async ({page}) => {
 });
 
 test("Can post article", async ({page}) => {
+    await page.goto(`/admin`);
     //Locators
     /*  find the way to make the locator be reuseble, as the only difference for buttons in navigator is the text.
     see if there is a way to make the text be a variable. */
