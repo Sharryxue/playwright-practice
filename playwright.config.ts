@@ -34,7 +34,19 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     // Setup project
-    { name: 'setup', testMatch: '**/*.setup.test.ts' },
+    { 
+      name: 'setup', 
+      testMatch: '**/*.setup.test.ts', 
+      teardown: 'clearn db',
+    },
+  
+    { 
+      name: 'clearn db', 
+      testMatch: '**/*.teardown.test.ts',
+      use: {
+        storageState: '.auth/user.json',
+      }
+    },
 
     {
       name: 'chromium',

@@ -1,21 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-async function Teardown(page) {
-    //Locators
-    const successMessage = page.locator(`.success`);
-    const removeOption = page.locator(`(//div[contains(@class,'row')]//div[@class='operate']//a)[1]`);
-    const oprateDropdown = page.locator(`(//div[contains(@class,'row')]//div[@class='operate']//button)[1]`);
-    const tableCheckbox = page.locator(`//tr[contains(.,'内部测试')]//input[(@type='checkbox')]`);
-
-    //Teardown Action
-    await tableCheckbox.check();
-    await oprateDropdown.click();
-    page.on('dialog', dialog => dialog.accept ());
-    await removeOption.click();
-    await expect(successMessage).toContainText('已经被删除');
-    expect(tableCheckbox).not.toBeVisible();
-}
-
 test("Can post page", async ({page}) => {
     await page.goto(`/admin`);
     //Locators
@@ -40,7 +24,7 @@ test("Can post page", async ({page}) => {
     await expect(successMessage).toHaveText('页面 "内部测试" 已经发布');
     expect(tableCheckbox).toBeVisible();
 
-    await Teardown(page);
+    // await Teardown(page);
 });
 
 test("Can post article", async ({page}) => {
@@ -68,7 +52,7 @@ test("Can post article", async ({page}) => {
     await expect(successMessage).toHaveText('文章 "内部测试" 已经发布');
     expect(tableCheckbox).toBeVisible();
 
-    await Teardown(page);
+    // await Teardown(page);
 });
 
 test.afterEach(async ({ page }) => {
