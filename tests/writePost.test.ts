@@ -23,8 +23,6 @@ test("Can post page", async ({page}) => {
     //Assertion
     await expect(successMessage).toHaveText('页面 "内部测试" 已经发布');
     expect(tableCheckbox).toBeVisible();
-
-    // await Teardown(page);
 });
 
 test("Can post article", async ({page}) => {
@@ -51,8 +49,6 @@ test("Can post article", async ({page}) => {
     //Assertion
     await expect(successMessage).toHaveText('文章 "内部测试" 已经发布');
     expect(tableCheckbox).toBeVisible();
-
-    // await Teardown(page);
 });
 
 test.afterEach(async ({ page }) => {
